@@ -1,3 +1,6 @@
 *\.log
 *\.secret
-
+# mongodb data files
+db_data
+# mongodb log files
+db_log

@@ -11,6 +11,8 @@ ENV MONGO_INITDB_ROOT_PASSWORD 000
 EXPOSE 27017
 
 # map data file to local
-RUN mkdir /database
-VOLUME ["/database"]
+RUN mkdir /db_log /database
+VOLUME ["/database","/db_log"]
 
+# start mongodb with specified configuration file
+CMD ["mongod","--config","/etc/mongod.conf"]
