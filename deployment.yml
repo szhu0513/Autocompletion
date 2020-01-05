@@ -1,0 +1,19 @@
+version: '3'
+services:
+        backend:
+                build:
+                        context: ./Backend
+        database:
+                build:
+                        context: ./Database
+                        dockerfile: Dockerfile
+                        args: 
+                          - DB_PWD
+                ports:
+                        - "5000:27017" 
+                volumes:
+                        - ./Database/db_data:/database
+                        - ./Database/db_log:/db_log
+                env_file:
+                        - ./Database/db.secret
+                command: [--auth]
