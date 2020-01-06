@@ -7,8 +7,6 @@ services:
                 build:
                         context: ./Database
                         dockerfile: Dockerfile
-                        args: 
-                          - DB_PWD
                 ports:
                         - "5000:27017" 
                 volumes:
@@ -16,4 +14,3 @@ services:
                         - ./Database/db_log:/db_log
                 env_file:
                         - ./Database/db.secret
-                command: [--auth]
