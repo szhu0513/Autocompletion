@@ -1,5 +1,6 @@
 *\.log
 *\.secret
+*\.pyc
 # mongodb data files
 db_data
 # mongodb log files
