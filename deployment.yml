@@ -3,6 +3,10 @@ services:
         backend:
                 build:
                         context: ./Backend
+                volumes:
+                        - ./Backend/autocompletion:/autocompletion
+                ports:
+                        - "8080:8000"
         database:
                 build:
                         context: ./Database
