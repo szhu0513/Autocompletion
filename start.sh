@@ -12,4 +12,9 @@ do
 			;;
 	esac
 done
+if [ -f hostip.secret ]; then
+    rm hostip.secret
+fi
+hostip=`hostname -I | cut -d ' ' -f1` 
+echo "HOST_IP=$hostip" > hostip.secret
 docker-compose -f deployment.yml up --build -d

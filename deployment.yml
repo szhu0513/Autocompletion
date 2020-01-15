@@ -7,6 +7,9 @@ services:
                         - ./Backend/autocompletion:/autocompletion
                 ports:
                         - "8080:8000"
+                env_file:
+                        - ./Database/db.secret
+                        - ./hostip.secret 
         database:
                 build:
                         context: ./Database
