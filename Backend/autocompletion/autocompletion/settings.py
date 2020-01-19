@@ -14,7 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+HOST_IP = os.environ.get("HOST_IP", "127.0.0.1")
+MONGO_INITDB_ROOT_USERNAME = os.environ.get("MONGO_INITDB_ROOT_USERNAME")
+MONGO_INITDB_ROOT_PASSWORD = os.environ.get("MONGO_INITDB_ROOT_PASSWORD")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,7 +27,7 @@ SECRET_KEY = 'x3o#2_*gnlx!_$t!1-%uf2%mi#w=jy9mutzwe(xjiwobg0hh8i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.199.114"]
+ALLOWED_HOSTS = [HOST_IP]
 
 
 # Application definition
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,13 @@ WSGI_APPLICATION = 'autocompletion.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE' : 'djongo',
+        'NAME' : 'autocompletion',
+        'USER' : MONGO_INITDB_ROOT_USERNAME,
+        'PASSWORD' : MONGO_INITDB_ROOT_PASSWORD,
+        'AUTH_SOURCE' : 'admin',
+        'HOST' : HOST_IP,
+        'PORT' : 5000,
     }
 }
 
