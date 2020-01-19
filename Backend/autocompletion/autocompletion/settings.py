@@ -27,7 +27,7 @@ SECRET_KEY = 'x3o#2_*gnlx!_$t!1-%uf2%mi#w=jy9mutzwe(xjiwobg0hh8i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.199.114"]
+ALLOWED_HOSTS = [HOST_IP]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,10 +78,13 @@ WSGI_APPLICATION = 'autocompletion.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE' : 'django_mongodb_engine',
-       'NAME' : 'autocompletion'
-       # 'ENGINE': 'django.db.backends.sqlite3',
-       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE' : 'djongo',
+        'NAME' : 'autocompletion',
+        'USER' : MONGO_INITDB_ROOT_USERNAME,
+        'PASSWORD' : MONGO_INITDB_ROOT_PASSWORD,
+        'AUTH_SOURCE' : 'admin',
+        'HOST' : HOST_IP,
+        'PORT' : 5000,
     }
 }
 

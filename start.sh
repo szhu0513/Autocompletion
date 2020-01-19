@@ -1,9 +1,9 @@
+docker-compose -f deployment.yml down
 while getopts "d" arg
 do 
 	case $arg in
 		d)
 			# stop all containers
-		        docker-compose -f deployment.yml down
 			exit 0
 			;;
 	        \?)
