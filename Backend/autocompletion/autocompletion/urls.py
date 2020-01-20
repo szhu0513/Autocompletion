@@ -19,5 +19,7 @@ from main import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('insert', views.insert, name='insert'),
+    path('pass/<word>', views.passWord, name='pass_word'),
     
 ]
