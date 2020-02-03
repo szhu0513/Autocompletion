@@ -1,8 +1,5 @@
-from djongo import models
+from mongoengine import Document, fields
 
-class Text(models.Model):
-    text = models.CharField(max_length=100)
-
-class Prefix(models.Model):
-    prefix = models.CharField(max_length=100)
-    next_char = models.ArrayField(model_container=Text)
+class Prefix(Document):
+    prefix = fields.StringField(required=True)
+    next_char = fields.ListField(fields.StringField(),default=list)
