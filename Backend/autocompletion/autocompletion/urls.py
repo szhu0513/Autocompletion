@@ -19,5 +19,7 @@ from main import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('insert', views.insert, name='insert'),
+    path('query', views.query, name='query'),
     
 ]
