@@ -21,3 +21,13 @@ services:
                         - ./Database/db_log:/db_log
                 env_file:
                         - ./Database/db.secret
+        react:
+                build:
+                        context: ./React
+                        dockerfile: Dockerfile
+                ports: 
+                        - "5001:3000"
+                volumes: 
+                        - ./React/react:/react
+                env_file: 
+                        - ./hostip.secret
