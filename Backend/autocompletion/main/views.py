@@ -7,7 +7,6 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def insert(request):
-    result = "test"
     word = request.GET.get("word")
     word = list(word)
     word.append("")
